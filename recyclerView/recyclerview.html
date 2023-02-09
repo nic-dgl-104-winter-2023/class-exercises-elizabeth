@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Student Information</title>
+  </head>
+  <body>
+    <div id="student-information"></div>
+    <script>
+      class Student {
+        constructor(name, id, courses) {
+          this.name = name;
+          this.id = id;
+          this.courses = courses;
+        }
+      }
+      
+      let data = [
+        new Student("John Doe", 123456, ["Math", "History", "Science"]),
+        new Student("Jane Doe", 654321, ["English", "Art"])
+      ];
+      
+      let studentInformation = document.querySelector("#student-information");
+      
+      for (let i = 0; i < data.length; i++) {
+        let student = data[i];
+        let studentDiv = document.createElement("div");
+        studentDiv.innerHTML = 
+          "<h3>" + student.name + "</h3>" + 
+          "<p>Student ID: " + student.id + "</p>" + 
+          "<p>Courses:</p>" + 
+          "<ul>" + 
+            student.courses.map(function(course) {
+              return "<li>" + course + "</li>";
+            }).join("") + 
+          "</ul>";
+        studentInformation.appendChild(studentDiv);
+      }
+    </script>
+  </body>
+</html>
